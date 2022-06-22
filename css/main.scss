@@ -53,7 +53,7 @@ p {
 	line-height: 100vh;
 	color: $bgColorSZU;
 
-	svg {
+	/* svg {
 		width: 100%;
 		max-height: 150px;
 		position: absolute;
@@ -82,7 +82,7 @@ p {
 		to {
 			stroke-dashoffset: -814;
 		}
-	}
+	} */
 }
 
 .margin-right-half {
@@ -196,9 +196,11 @@ p {
 		font-weight: bolder;
 		> h1 {
 			font-size: 3rem;
+			text-shadow: 1px 1px 1px;
 		}
 		> h2 {
 			font-size: 2rem;
+			text-shadow: 1px 1px 1px;
 		}
 	}
 	&__description {
