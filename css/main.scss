@@ -52,6 +52,37 @@ p {
 	text-align: center;
 	line-height: 100vh;
 	color: $bgColorSZU;
+
+	svg {
+		width: 100%;
+		max-height: 250px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		#svg-pulsar {
+			stroke-dasharray: 281;
+			-webkit-animation: dash 2.5s infinite linear forwards;
+			animation: dash 2.5s infinite linear forwards;
+		}
+	}
+
+	@-webkit-keyframes dash {
+		from {
+			stroke-dashoffset: 814;
+		}
+		to {
+			stroke-dashoffset: -814;
+		}
+	}
+	@keyframes dash {
+		from {
+			stroke-dashoffset: 814;
+		}
+		to {
+			stroke-dashoffset: -814;
+		}
+	}
 }
 
 .margin-right-half {
@@ -115,6 +146,46 @@ p {
 		transform: rotateX(50deg) translateX(-25%) translateY(-5%) scale(1.2);
 	}
 
+	.tag_cloud {
+		position: absolute;
+		width: 25%;
+		height: 50%;
+		top: 25%;
+		left: 5%;
+	}
+
+	.tag_cloud a {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		padding: 11px 30px;
+		color: white;
+		font-size: 16px;
+		border: 1px solid #e6e7e8;
+		border-radius: 18px;
+		text-decoration: none;
+		white-space: nowrap;
+		-o-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, 0.34);
+		-ms-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, 0.34);
+		-moz-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, 0.34);
+		-webkit-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, 0.34);
+		box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, 0.34);
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')";
+		/*兼容ie7/8*/
+		filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
+		/*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
+
+		transition: tranform 0.5s;
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+
+	.tag_cloud a:hover {
+		color: #3385cf;
+		background-color: #f2f4f8;
+	}
+
 	&__title {
 		position: absolute;
 		text-align: center;
@@ -143,7 +214,8 @@ p {
 		overflow: hidden;
 		&::before {
 			content: "";
-			background-image: url("https://s2.loli.net/2022/06/07/BbzFe6SsCYjvA7U.jpg");
+			// background-image: url("https://s2.loli.net/2022/06/07/BbzFe6SsCYjvA7U.jpg");
+			background-image: url("../images/huarun.jpg");
 			background-size: cover;
 			position: absolute;
 			display: block;
@@ -162,7 +234,8 @@ p {
 }
 
 .main {
-	background-image: url("https://s2.loli.net/2022/06/07/Dej451T2gSvqWy8.jpg");
+	// background-image: url("https://s2.loli.net/2022/06/07/Dej451T2gSvqWy8.jpg");
+	background-image: url("../images/szu-bg1.jpg");
 	background-size: contain;
 	background-repeat: repeat-y;
 	overflow: hidden;
@@ -232,7 +305,7 @@ p {
 					padding-left: 1.2rem;
 					li {
 						padding: 0.5rem 0;
-                        line-height: 1.5rem;
+						line-height: 1.5rem;
 					}
 				}
 			}
