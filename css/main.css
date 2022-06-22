@@ -44,15 +44,15 @@ p {
 }
 .bgCover svg {
   width: 100%;
-  max-height: 250px;
+  max-height: 150px;
   position: absolute;
   bottom: 0;
   left: 0;
 }
 .bgCover svg #svg-pulsar {
   stroke-dasharray: 281;
-  -webkit-animation: dash 2.5s infinite linear forwards;
-  animation: dash 2.5s infinite linear forwards;
+  -webkit-animation: dash 5s infinite linear forwards;
+  animation: dash 5s infinite linear forwards;
 }
 @-webkit-keyframes dash {
   from {
@@ -196,7 +196,7 @@ p {
 }
 .header__description::before {
   content: "";
-  background-image: url("../images/huarun-min.jpg");
+  background-image: url("../images/huarun.jpg");
   background-size: cover;
   position: absolute;
   display: block;
