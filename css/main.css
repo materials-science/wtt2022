@@ -196,7 +196,7 @@ p {
 }
 .header__description::before {
   content: "";
-  background-image: url("../images/huarun.jpg");
+  background-image: url("../images/huarun-min.jpg");
   background-size: cover;
   position: absolute;
   display: block;
