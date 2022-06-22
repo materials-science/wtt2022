@@ -51,8 +51,8 @@ p {
 }
 .bgCover svg #svg-pulsar {
   stroke-dasharray: 281;
-  -webkit-animation: dash 3.5s infinite linear forwards;
-  animation: dash 3.5s infinite linear forwards;
+  -webkit-animation: dash 2.5s infinite linear forwards;
+  animation: dash 2.5s infinite linear forwards;
 }
 @-webkit-keyframes dash {
   from {
