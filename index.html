@@ -1,0 +1,936 @@
+---
+permalink: /wtt2022
+---
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+    <title>WTT2022 - IAS of SZU</title>
+    <meta name="keywords" content="深圳,深圳大学，高等研究院,WTT2022" />
+    <meta name="description"
+        content="第七届全国热传导研讨会（WTT2022）将由深圳大学高等研究院承办。WTT2022将以线下方式举办，旨在为热输运领域的研究人员和研究生提供一个交流平台，围绕热传导及其交叉领域中的关键问题进行研讨交流，分享近来在理论、模拟、实验方面的进展。" />
+    <link rel="shortcut icon" href="/wtt2022/images/favicon.ico" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/wtt2022/css/main.css" media="screen">
+    <style>
+        .tag_cloud {
+            position: absolute;
+            width: 25%;
+            height: 50%;
+            top: 25%;
+            left: 5%;
+        }
+
+        .tag_cloud a {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            padding: 11px 30px;
+            color: white;
+            font-size: 16px;
+            border: 1px solid #e6e7e8;
+            border-radius: 18px;
+            text-decoration: none;
+            white-space: nowrap;
+            -o-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+            -ms-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+            -moz-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+            -webkit-box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+            box-shadow: 6px 4px 8px 0 rgba(151, 142, 136, .34);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')";
+            /*兼容ie7/8*/
+            filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=125, Strength=9);
+            /*strength是阴影大小，direction是阴影方位，单位为度，可以为负数，color是阴影颜色 （尽量使用数字）使用IE滤镜实现盒子阴影的盒子必须是行元素或以行元素显示（block或inline-block;）*/
+
+            transition: tranform .5s;
+            background-color: rgba(255, 255, 255, .5);
+        }
+
+        .tag_cloud a:hover {
+            color: #3385cf;
+            background-color: #f2f4f8;
+        }
+    </style>
+    <script type="text/javascript">
+        /* documents */
+        const mettingDocs = {
+            "title": "WTT2022",
+            "vice_title": "第七届全国热传导研讨会",
+            "description": "近年来热传导研究在凝聚态物理、统计物理、工程热物理、导热材料等领域取得了长足的进展，研究学者们也提出了很多新的科学问题。\n在此背景下，国内外同行决定举办一年一度的“热传导研讨会”。该研讨会能够为国内从事热能科学及其交叉领域研究的师生提供很好的交流与合作平台。\n目前该研讨会已成功举办六届：首届研讨会于2016年在南京师范大学举行；第二、三、四、五、六届分别由扬州大学、厦门大学和华侨大学、华中科技大学、青岛科技大学、昆明理工大学承办。",
+            "metting_info": "第一轮会议通知<span><i class=\"fa fa-calendar\"></i>2022年06月06日</span>",
+            "metting_topic": ["声子学",
+                "声子工程",
+                "拓扑手性声子",
+                "低维纳米传热",
+                "量子热输运",
+                "热超材料",
+                "热蒸发",
+                "热辐射",
+                "柔性材料导热",
+                "电池热管理",
+                "传热与传质",
+                "热物性测量",
+                "热电转换",
+                "热能利用与存储"],
+            "metting_date": "2022年08月06日——08月09日",
+            "metting_location": "雅庭海湾国际大酒店（深圳市盐田区海山路2号）"
+        };
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js"></script>
+    <script src="/wtt2022/js/china.js" type="text/javascript"></script>
+    <!--引入Javascript API GL，参数说明参见下文-->
+    <script src="https://map.qq.com/api/gljs?v=1.exp&key=YPHBZ-76SED-BRG4Y-HTCTD-YVTXO-TCFZQ"></script>
+    <script charset="utf-8"
+        src="https://map.qq.com/api/gljs?v=1.exp&key=YPHBZ-76SED-BRG4Y-HTCTD-YVTXO-TCFZQ&libraries=service"></script>
+    <script type="text/javascript">
+        var map;
+        //定义地图中心点坐标
+        var center = new TMap.LatLng(22.554521, 114.242265)
+        function initApp() {
+            //地图初始化函数，本例取名为init，开发者可根据实际情况定义
+            function initMap() {
+                //定义map变量，调用 TMap.Map() 构造函数创建地图
+                map = new TMap.Map(document.getElementById('location__container'), {
+                    center: center,//设置地图中心点坐标
+                    zoom: 16.2,   //设置地图缩放级别,
+                    minZoom: 10,
+                    maxZoom: 17,
+                    pitch: 43.5,  //设置俯仰角
+                    rotation: 45    //设置地图旋转角度
+                });
+
+                //创建并初始化MultiMarker
+                var markerLayer = new TMap.MultiMarker({
+                    map: map,  //指定地图容器
+                    //样式定义
+                    styles: {
+                        //创建一个styleId为"myStyle"的样式（styles的子属性名即为styleId）
+                        "myStyle": new TMap.MarkerStyle({
+                            "width": 25,  // 点标记样式宽度（像素）
+                            "height": 35, // 点标记样式高度（像素）
+                            //焦点在图片中的像素位置，一般大头针类似形式的图片以针尖位置做为焦点，圆形点以圆心位置为焦点
+                            "anchor": { x: 16, y: 32 }
+                        })
+                    },
+                    //点标记数据数组
+                    geometries: [{
+                        "id": "1",   //点标记唯一标识，后续如果有删除、修改位置等操作，都需要此id
+                        "styleId": 'myStyle',  //指定样式id
+                        "position": new TMap.LatLng(22.553443, 114.24181),  //点标记坐标位置
+                        "properties": {//自定义属性
+                            "title": "雅庭海湾国际大酒店"
+                        }
+                    }, {//第二个点标记
+                        "id": "2",
+                        "styleId": 'marker',
+                        "position": new TMap.LatLng(22.553371, 114.24227),
+                        "properties": {
+                            "title": "地下停车场"
+                        }
+                    }
+                    ]
+                });
+            }
+
+            function initRoadMap(startPosition, endPosition) {
+                var instructionContainer = document.getElementById('location__instruction');
+                instructionContainer.innerHTML = '<h4 style="text-align:center;"><i class="fa fa-spinner fa-spin"></i></h4>';
+
+                var ne = new TMap.LatLng(Math.max(
+                    startPosition.getLat(), endPosition.getLat()
+                ) * 1.0005, Math.max(
+                    startPosition.getLng(), endPosition.getLng()
+                ) * 1.0005);//东北角坐标
+                var sw = new TMap.LatLng(Math.min(
+                    startPosition.getLat(), endPosition.getLat()
+                ) * 0.9995, Math.min(
+                    startPosition.getLng(), endPosition.getLng()
+                ) * 0.9995);//西南角坐标
+
+                map = new TMap.Map("location__container", {
+                    minZoom: 10,
+                    maxZoom: 17,
+                    center: new TMap.LatLng(
+                        (startPosition.getLat() + endPosition.getLat()) / 2,
+                        (startPosition.getLng() + endPosition.getLng()) / 2
+                    ),
+                });
+
+                var latLngBounds = new TMap.LatLngBounds(sw, ne)
+                map.fitBounds(latLngBounds);
+
+                var marker = new TMap.MultiMarker({ // 创造MultiMarker显示起终点标记
+                    id: 'marker-layer',
+                    map: map,
+                    styles: {
+                        start: new TMap.MarkerStyle({
+                            width: 25,
+                            height: 35,
+                            anchor: { x: 16, y: 32 },
+                            src: 'https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/start.png',
+                        }),
+                        end: new TMap.MarkerStyle({
+                            width: 25,
+                            height: 35,
+                            anchor: { x: 16, y: 32 },
+                            src: 'https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/end.png',
+                        }),
+                    },
+                    geometries: [
+                        {
+                            id: 'start',
+                            styleId: 'start',
+                            position: startPosition,
+                        },
+                        {
+                            id: 'end',
+                            styleId: 'end',
+                            position: endPosition,
+                        },
+                    ],
+                });
+                var polylineLayer = new TMap.MultiPolyline({  // 创建 MultiPolyline显示路径折线
+                    map: map,
+                    styles: {
+                        'style_blue': new TMap.PolylineStyle({
+                            color: '#3777FF',
+                            width: 10,
+                            borderWidth: 0,
+                            showArrow: true,
+                            arrowOptions: {
+                                space: 70
+                            },
+                            lineCap: 'round',
+                        }),
+                    },
+                    geometries: [],
+                });
+                var transit = new TMap.service.Transit({ // 新建一个公交路线规划类
+                    policy: "RECOMMEND", // 规划策略
+                });
+                transit.search({ from: startPosition, to: endPosition }).then((result) => { //搜索路径
+                    var route = result.result.routes[0];
+                    var transStr = "<h4>公交路线规划</h4>"
+                    var rainbowPaths = [];
+                    route.steps.forEach((step) => {
+                        if (step.mode === 'WALKING') {
+                            rainbowPaths.push({ path: step.polyline, color: 'rgba(51, 51, 255, 1)', }); //绘制步行路线
+                            transStr += `<h5>步行（${step.duration}分钟）</h5>`;
+                            step.steps && step.steps.forEach((subStep, index) => {
+                                transStr += `<p>${index + 1}. ${subStep.instruction}</p>` // 显示步行指引
+                            });
+                        }
+                        else {
+                            step.lines.forEach((line) => {
+
+                                if (line.vehicle === 'SUBWAY') {
+                                    rainbowPaths.push({ path: line.polyline, color: 'rgba(245, 185, 23, 1)' }); //绘制地铁路线
+                                } else {
+                                    rainbowPaths.push({ path: line.polyline, color: 'rgba(28, 204, 108, 1)' }); //绘制非地铁公交路线
+                                }
+                                transStr += `<h5>搭乘<strong>${line.title}</strong>（<em>${line.duration}</em>分钟）</h5>`; // 显示搭乘指引
+                                transStr += `<p>上车站：${line.geton.title}</p>`;
+                                transStr += `<p>下车站：${line.getoff.title}</p>`;
+                            });
+                        }
+                    });
+                    polylineLayer.updateGeometries([{
+                        styleId: 'style_blue',
+                        rainbowPaths: rainbowPaths,
+                    }])
+
+                    instructionContainer.innerHTML = transStr;
+                });
+            }
+
+            var szsBtn = document.querySelector("#roadSZS");
+            var sznBtn = document.querySelector("#roadSZN");
+            var szFTBtn = document.querySelector("#roadFT");
+            var szBABtn = document.querySelector("#roadBA");
+            var skBtn = document.querySelector("#roadSK");
+            var szuBtn = document.querySelector("#roadSZU");
+
+            var endPosition = new TMap.LatLng(22.553443, 114.24181); // 路线规划终点
+            szsBtn.addEventListener("click", (e) => {
+                var startPosition = new TMap.LatLng(22.53168, 114.117209); // 路线规划起点
+
+                !!map && map.destroy();
+                initRoadMap(startPosition, endPosition);
+            })
+            sznBtn.addEventListener("click", (e) => {
+                var startPosition = new TMap.LatLng(22.610563, 114.030311); // 路线规划起点
+                !!map && map.destroy();
+                initRoadMap(startPosition, endPosition);
+            })
+            szFTBtn.addEventListener("click", (e) => {
+                var startPosition = new TMap.LatLng(22.537952, 114.056851); // 路线规划起点
+                !!map && map.destroy();
+                initRoadMap(startPosition, endPosition);
+            })
+            szBABtn.addEventListener("click", (e) => {
+                var startPosition = new TMap.LatLng(22.629533, 113.815882); // 路线规划起点
+                !!map && map.destroy();
+                initRoadMap(startPosition, endPosition);
+            })
+            szuBtn.addEventListener("click", (e) => {
+                var startPosition = new TMap.LatLng(22.532742, 113.936696); // 路线规划起点
+                !!map && map.destroy();
+                initRoadMap(startPosition, endPosition);
+            })
+            skBtn.addEventListener("click", (e) => {
+                var startPosition = new TMap.LatLng(22.47571, 113.913151); // 路线规划起点
+                !!map && map.destroy();
+                initRoadMap(startPosition, endPosition);
+            })
+
+            !!map && map.destroy();
+            initMap();
+        }
+
+        window.onload = function () {
+            /* Load Header Map */
+            let cmap = document.querySelector("#cmap");
+            cmap.style.width = window.innerWidth + "px";
+            cmap.style.height = window.innerHeight / 2 + "px";
+            if (cmap.clientHeight > 0) {
+                let chart = echarts.init(cmap);
+                chart.setOption({
+                    geo: {
+                        map: 'china',
+                        silent: true,
+                        // 地图区域的样式设置
+                        itemStyle: {
+                            borderColor: "rgba(147, 235, 248, 1)",
+                            borderWidth: 1,
+                            areaColor: {
+                                type: "radial",
+                                x: 0.5,
+                                y: 0.5,
+                                r: 0.8,
+                                colorStops: [
+                                    {
+                                        offset: 0,
+                                        color: "rgba(147, 235, 248, 0)", // 0% 处的颜色
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "rgba(147, 235, 248, .2)", // 100% 处的颜色
+                                    },
+                                ],
+                                globalCoord: false, // 缺省为 false
+                            },
+                            shadowColor: "rgba(128, 217, 248, 1)",
+                            shadowOffsetX: -2,
+                            shadowOffsetY: 2,
+                            shadowBlur: 10,
+                        },
+                    },
+                    series: [
+                        {
+                            type: "scatter",
+                            coordinateSystem: "geo",
+                            symbol: "pin",
+                            legendHoverLink: true,
+                            symbolSize: [60, 60],
+                            // 标志的样式
+                            itemStyle: {
+                                color: "rgba(255,0,0,.7)",
+                                // shadowBlur: 2,
+                                shadowColor: "D8BC37",
+                            },
+                            label: {
+                                show: true,
+                                formatter(value) {
+                                    return value.name
+                                },
+                                color: "#fff",
+                            },
+                            data: [
+                                { name: "深圳", value: [114.03, 22.32] },
+                            ],
+                            showEffectOn: "render",
+                            rippleEffect: {
+                                brushType: "stroke",
+                            },
+                        },
+                        {
+                            type: "scatter",
+                            coordinateSystem: "geo",
+                            symbol: "pin",
+                            legendHoverLink: true,
+                            symbolSize: [50, 50],
+                            // 标志的样式
+                            itemStyle: {
+                                color: "rgba(255,165,0,.5)",
+                                shadowBlur: 2,
+                                shadowColor: "D8BC37",
+                            },
+                            label: {
+                                show: true,
+                                formatter(value) {
+                                    return value.name
+                                },
+                                color: "#fff",
+                            },
+                            data: [
+                                { name: "扬州", value: [119.26, 32.24] },
+                                { name: "厦门", value: [118.04, 24.26] },
+                                { name: "武汉", value: [113.41, 29.58] },
+                                { name: "青岛", value: [119.30, 35.35] },
+                                { name: "昆明", value: [102.10, 24.23] },
+                            ],
+                            showEffectOn: "render",
+                            rippleEffect: {
+                                brushType: "stroke",
+                            },
+                        }
+                    ],
+                });
+            }
+
+            /* nav btn event */
+            navBarsBtn = document.querySelector(".nav__bars");
+            navList = document.querySelector(".nav__list");
+            var navCollapse = true;
+            navBarsBtn.addEventListener("click", () => {
+                if (navCollapse) {
+                    navList.style.display = "block";
+                } else {
+                    navList.style.display = "none";
+                }
+                navCollapse = !navCollapse;
+            })
+
+            /* Load Tencent Map */
+            initApp();
+
+            function initTagCloud(radius /* 标签云半径 */,
+                tspeed /* 标签运动速度 */) {
+                var radius = radius || 68;// 标签云半径
+                var dtr = Math.PI / 180;
+                var d = 300;
+                var mcList = [];
+                var active = false;
+                var lasta = 1;
+                var lastb = 1;
+                var distr = true;
+                var tspeed = tspeed || 2;//关键，这句是调试标签运动速度的
+                var size = 250;
+                var mouseX = 0;
+                var mouseY = 0;
+                var howElliptical = 1;
+                var aA = null;
+                var oDiv = null;
+
+                var i = 0;
+                var oTag = null;
+                oDiv = document.getElementById('tag_cloud');
+                aA = oDiv.getElementsByTagName('a');
+                for (i = 0; i < aA.length; i++) {
+                    oTag = {};
+                    oTag.offsetWidth = aA[i].offsetWidth;
+                    oTag.offsetHeight = aA[i].offsetHeight;
+                    mcList.push(oTag);
+                }
+                sineCosine(0, 0, 0);
+                positionAll();
+                oDiv.onmouseover = function () {
+                    active = true;
+                };
+                oDiv.onmouseout = function () {
+                    active = false;
+                };
+                oDiv.onmousemove = function (ev) {
+                    var oEvent = window.event || ev;
+                    mouseX = oEvent.clientX - (oDiv.offsetLeft + oDiv.offsetWidth / 2);
+                    mouseY = oEvent.clientY - (oDiv.offsetTop + oDiv.offsetHeight / 2);
+                    mouseX /= 5;
+                    mouseY /= 5;
+                };
+                setInterval(update, 30);
+
+                function update() {
+                    var a;
+                    var b;
+                    if (active) {
+                        a = (-Math.min(Math.max(-mouseY, -size), size) / radius) * tspeed;
+                        b = (Math.min(Math.max(-mouseX, -size), size) / radius) * tspeed;
+                    } else {
+                        a = lasta * 0.95;
+                        b = lastb * 0.95;
+                    }
+                    lasta = a;
+                    lastb = b;
+                    if (Math.abs(a) <= 0.01 && Math.abs(b) <= 0.01) {
+                        return;
+                    }
+                    var c = 0;
+                    sineCosine(a, b, c);
+                    for (var j = 0; j < mcList.length; j++) {
+                        var rx1 = mcList[j].cx;
+                        var ry1 = mcList[j].cy * ca + mcList[j].cz * (-sa);
+                        var rz1 = mcList[j].cy * sa + mcList[j].cz * ca;
+                        var rx2 = rx1 * cb + rz1 * sb;
+                        var ry2 = ry1;
+                        var rz2 = rx1 * (-sb) + rz1 * cb;
+                        var rx3 = rx2 * cc + ry2 * (-sc);
+                        var ry3 = rx2 * sc + ry2 * cc;
+                        var rz3 = rz2;
+                        mcList[j].cx = rx3;
+                        mcList[j].cy = ry3;
+                        mcList[j].cz = rz3;
+                        per = d / (d + rz3);
+                        mcList[j].x = (howElliptical * rx3 * per) - (howElliptical * 2);
+                        mcList[j].y = ry3 * per;
+                        mcList[j].scale = per;
+                        mcList[j].alpha = per;
+                        mcList[j].alpha = (mcList[j].alpha - 0.6) * (10 / 6);
+                    }
+                    doPosition();
+                    depthSort();
+                }
+
+                function depthSort() {
+                    var i = 0;
+                    var aTmp = [];
+                    for (i = 0; i < aA.length; i++) {
+                        aTmp.push(aA[i]);
+                    }
+                    aTmp.sort(function (vItem1, vItem2) {
+                        if (vItem1.cz > vItem2.cz) {
+                            return -1;
+                        } else if (vItem1.cz < vItem2.cz) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    });
+                    for (i = 0; i < aTmp.length; i++) {
+                        aTmp[i].style.zIndex = i;
+                    }
+                }
+
+                function positionAll() {
+                    var phi = 0;
+                    var theta = 0;
+                    var max = mcList.length;
+                    var i = 0;
+                    var aTmp = [];
+                    var oFragment = document.createDocumentFragment(); //随机排序 
+                    for (i = 0; i < aA.length; i++) {
+                        aTmp.push(aA[i]);
+                    }
+                    aTmp.sort(function () {
+                        return Math.random() < 0.5 ? 1 : -1;
+                    });
+                    for (i = 0; i < aTmp.length; i++) {
+                        oFragment.appendChild(aTmp[i]);
+                    }
+                    oDiv.appendChild(oFragment);
+                    for (var i = 1; i < max + 1; i++) {
+                        if (distr) {
+                            phi = Math.acos(-1 + (2 * i - 1) / max);
+                            theta = Math.sqrt(max * Math.PI) * phi;
+                        } else {
+                            phi = Math.random() * (Math.PI);
+                            theta = Math.random() * (2 * Math.PI);
+                        } //坐标变换 
+                        mcList[i - 1].cx = radius * Math.cos(theta) * Math.sin(phi);
+                        mcList[i - 1].cy = radius * Math.sin(theta) * Math.sin(phi);
+                        mcList[i - 1].cz = radius * Math.cos(phi);
+                        var left = mcList[i - 1].cx + oDiv.offsetWidth / 2 - mcList[i - 1].offsetWidth / 2;
+                        var top = mcList[i - 1].cy + oDiv.offsetHeight / 2 - mcList[i - 1].offsetHeight / 2;
+                        aA[i - 1].style.transform = "translateX(" + left + 'px)' + " translateY(" + top + 'px)';
+                    }
+                }
+
+                function doPosition() {
+                    var l = oDiv.offsetWidth / 2;
+                    var t = oDiv.offsetHeight / 2;
+                    for (var i = 0; i < mcList.length; i++) {
+                        var left = mcList[i].cx + l - mcList[i].offsetWidth / 2;
+                        var top = mcList[i].cy + t - mcList[i].offsetHeight / 2;
+                        var scale = mcList[i].scale;
+                        aA[i].style.transform = "translateX(" + left + 'px)' + " translateY(" + top + 'px)' + " scale(" + scale + ")";
+                        aA[i].style.filter = "alpha(opacity=" + 100 * mcList[i].alpha + ")";
+                        aA[i].style.opacity = mcList[i].alpha;
+                    }
+                }
+
+                function sineCosine(a, b, c) {
+                    sa = Math.sin(a * dtr);
+                    ca = Math.cos(a * dtr);
+                    sb = Math.sin(b * dtr);
+                    cb = Math.cos(b * dtr);
+                    sc = Math.sin(c * dtr);
+                    cc = Math.cos(c * dtr);
+                }
+            }
+            /* Load tag cloud */
+            if (cmap.clientHeight > 0) {
+                let tagsDom = document.querySelector("#tag_cloud");
+                !!mettingDocs.metting_topic && mettingDocs.metting_topic.forEach((item) => {
+                    let a = document.createElement("a");
+                    a.innerHTML = item;
+                    tagsDom.appendChild(a);
+                })
+
+                initTagCloud(tagsDom.clientHeight * 0.5, 5);
+            }
+
+            /* hidden loading bg */
+            (($) => {
+                setTimeout(() => {
+                    $.querySelector(".bgCover").style.opacity = 0
+                    setTimeout(() => {
+                        $.querySelector(".bgCover").style.display = "none";
+                    }, 500);
+                    $.body.style.overflow = "auto";
+                }, 1000)
+
+            })(document);
+        };
+    </script>
+</head>
+
+<body style="overflow: hidden;">
+    <div class="bgCover">
+        <i class="fa fa-spin fa-spinner"></i>
+    </div>
+
+    <nav class="nav">
+        <div class="nav__logos">
+            <a href="https://ias.szu.edu.cn/">
+                <!-- <img src="https://s2.loli.net/2022/06/07/qbaVtyH1K36peu5.png"> -->
+                <img class="nav__logos__img--detail" src="https://s2.loli.net/2022/06/07/O35EMl8csNJt2LD.png">
+                <img class="nav__logos__img--logo" src="/wtt2022/images/ias.jpg">
+            </a>
+            <i class="fa fa-bars nav__bars"></i>
+        </div>
+        <ul class="nav__list">
+            <li><a href="#metting">WTT2022</a></li>
+            <li>会议议程</li>
+            <li><a href="#location">交通指引</a></li>
+            <li><a href="#meeting__wj">会议注册</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <div id="cmap"></div>
+        <div id="tag_cloud" class="tag_cloud">
+            <!-- <a href="https://ias.szu.edu.cn/">深圳大学高等研究院</a>
+            <a href="http://cpoe.szu.edu.cn/">深圳大学物理与光电工程学院</a>
+            <a href="http://mse.sustech.edu.cn/">南方科技大学材料科学与工程系</a>
+            <a href="http://phys.cqu.edu.cn/">重庆大学物理学院</a>
+            <a href="https://www.sigs.tsinghua.edu.cn/">清华大学深圳国际研究生院</a>
+            <a href="http://www.yzu.edu.cn/">扬州大学</a>
+            <a href="https://www.xmu.edu.cn/">厦门大学</a>
+            <a href="https://www.hust.edu.cn/">华中科技大学</a>
+            <a href="https://www.qust.edu.cn/">昆明理工大学</a> -->
+        </div>
+        <div class="header__title animate__animated animate__fadeInUp animate__delay-1s">
+            <h1 data-title>WTT2022</h1>
+            <h2 data-vice_title>第七届全国热传导研讨会</h2>
+        </div>
+        <div class="header__description animate__animated animate__slideInRight animate__delay-1s" data-description>
+            <p>近年来热传导研究在凝聚态物理、统计物理、工程热物理、导热材料等领域取得了长足的进展，研究学者们也提出了很多新的科学问题。</p>
+            <p>在此背景下，国内外同行决定举办一年一度的“热传导研讨会”。该研讨会能够为国内从事热能科学及其交叉领域研究的师生提供很好的交流与合作平台。</p>
+            <p>目前该研讨会已成功举办六届：首届研讨会于2016年在南京师范大学举行；第二、三、四、五、六届分别由扬州大学、厦门大学和华侨大学、华中科技大学、青岛科技大学、昆明理工大学承办。</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <article class="article notice" id="metting">
+            <h2>会议通知</h2>
+            <section class="notice__title">
+                <h3 data-metting_info>
+                    第一轮会议通知
+                    <span><i class="fa fa-calendar"></i>2022年06月16日</span>
+                </h3>
+                <p data-metting_description>
+                    第七届全国热传导研讨会（WTT 2022）将由深圳大学高等研究院和南方科技大学材料科学与工程系承办。研讨会将以线下方式举办，旨在为热输运领域的研究人员和研究生提供一个交流平台，围绕热传导及其交叉领域中的关键问题进行研讨交流，分享近来在理论、模拟、实验方面的进展。
+                    我们诚挚邀请相关专家和研究人员出席本届全国热传导研讨会。
+                </p>
+            </section>
+
+            <section class="notice__metting_topic">
+                <h3>会议主题</h3>
+                <p data-metting_topic>
+                    <span>声子学</span>
+                    <span>声子工程</span>
+                    <span>拓扑手性声子</span>
+                    <span>低维纳米传热</span>
+                    <span>量子热输运</span>
+                    <span>热超材料</span>
+                    <span>热蒸发</span>
+                    <span>热辐射</span>
+                    <span>柔性材料导热</span>
+                    <span>电池热管理</span>
+                    <span>传热与传质</span>
+                    <span>热物性测量</span>
+                    <span>热电转换</span>
+                    <span>热能利用与存储</span>
+                </p>
+            </section>
+
+            <section class="notice__metting_date">
+                <h3>会议时间</h3>
+                <p>2022年08月07日——2022年08月09日</p>
+            </section>
+
+            <section class="notice__metting_addr">
+                <h3>会议地点</h3>
+                <p>
+                    <a href="#location"><i class="fa fa-map-marker margin-right-half"></i>雅庭海湾国际大酒店（深圳市盐田区海山路2号）</a>
+                </p>
+            </section>
+
+            <section class="notice__metting_date">
+                <h3>会议报道时间与地点</h3>
+                <p><span>2022年08月07日早于<a href="#location">深圳雅庭海湾国际大酒店</a>报到，08月09日晚离会。</span></p>
+            </section>
+
+            <section class="notice__metting_fee">
+                <h3>注册费用</h3>
+                <p>学生：1000元，教师：1800元，企业代表：2500元
+                    参会代表往返交通费及会议期间食宿费用自理。
+                    会务组已在参会酒店预订了数量充足的房间，房费450元/晚。届时，各参会代表完成注册报到后自行前往酒店前台登记住宿即可。</p>
+                <h3>付款方式</h3>
+                <p>深圳大学收取会议注册费并开具发票，支付账号如下：</p>
+                <p class="notice__metting_fee__ticket">户名：深圳大学
+                    银行：中国银行深圳深大支行
+                    账号：7484 6706 4612
+                    税号：1244 0300 4557 4531 64
+                    地址：深圳市南山区南海大道3688号深圳大学
+                    电话：075526536114
+                </p>
+                <p>线下会议注册费用现场缴纳。会务组将根据到款凭证安排会议日程，开具会议费发票。给各位代表造成的不便，还请谅解！</p>
+                <p>会议注册费发票可开具纸质发票和电子发票，开具明细为“会务费”。请参会代表在会议回执中填写发票信息。</p>
+            </section>
+
+            <section class="notice__metting_tips">
+                <h3>会议报告说明</h3>
+                <ol>
+                    <li>第七届全国热传导研讨会将采用线下举办。</li>
+                    <li>会议报告包括：大会报告(45分钟)，邀请报告(25–30分钟)，普通口头报告(12–15分钟)，海报报告(3分钟)。</li>
+                    <li>会议报告格式：口头报告PPT画面比例为16：9。会务组提供张贴海报支架要求的海报画面尺寸为80 cm(宽)×180 cm(高)。会务组提供张贴海报支持，各参会代表也可以自己携带海报易拉宝参会。
+                    </li>
+                    <li>海报报告特殊说明：仅支持线下海报报告(3分钟现场口头展示)和海报张贴展示。如需要海报张贴展示请联系会务组，邮寄海报至：<em>广东省深圳市南山区南海大道3688号深圳大学沧海校区致知楼7楼学生办公室</em>，邮编：518060，庞桂健，15889680048。会务组会安排海报张贴。
+                    </li>
+                </ol>
+            </section>
+
+            <section class="notice__metting_concat">
+                <h3>地方组织委员会</h3>
+                <h4>负责人</h4>
+                <p>
+                    <span><i class="fa fa-user"></i>李武</span>
+                    <span><a href="mailto:wu.li@szu.edu.cn"><i class="fa fa-envelope"></i>wu.li@szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>李保文</span>
+                    <span><a href="mailto:libw@sustech.edu.cn"><i
+                                class="fa fa-envelope"></i>libw@sustech.edu.cn</a></span>
+                </p>
+                <h4>成员</h4>
+                <p>
+                    <span><i class="fa fa-user"></i>李晓光</span>
+                    <span><a href="mailto:xgli@szu.edu.cn"><i class="fa fa-envelope"></i>xgli@szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>慈鹏弘</span>
+                    <span><a href="mailto:ci@szu.edu.cn"><i class="fa fa-envelope"></i>ci@szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>陈雅妮</span>
+                    <span><a href="mailto:chenyn@szu.edu.cn"><i class="fa fa-envelope"></i>chenyn@szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>Aymeric Ramiere</span>
+                    <span><a href="mailto:ramiere@szu.edu.cn"><i
+                                class="fa fa-envelope"></i>ramiere@szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>杨小龙</span>
+                    <span><a href="mailto:yangxl@cqu.edu.cn"><i class="fa fa-envelope"></i>yangxl@cqu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>谢杨苏</span>
+                    <span><a href="mailto:ysxie@szu.edu.cn"><i class="fa fa-envelope"></i>ysxie@szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>孙波</span>
+                    <span><a href="mailto:sun.bo@sz.tsinghua.edu.cn"><i
+                                class="fa fa-envelope"></i>sun.bo@sz.tsinghua.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>郭亮</span>
+                    <span><a href="mailto:guol3@sustech.edu.cn"><i
+                                class="fa fa-envelope"></i>guol3@sustech.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>庞桂健</span>
+                    <span><a href="mailto:pangguijian2021@email.szu.edu.cn"><i
+                                class="fa fa-envelope"></i>pangguijian2021@email.szu.edu.cn</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>张波</span>
+                    <span><a href="mailto:poryoung@outlook.com"><i
+                                class="fa fa-envelope"></i>poryoung@outlook.com</a></span>
+                </p>
+                <p>
+                    <span><i class="fa fa-user"></i>韦宝杰</span>
+                    <span><a href="mailto:weibj@sustech.edu.cn"><i
+                                class="fa fa-envelope"></i>weibj@sustech.edu.cn</a></span>
+                </p>
+            </section>
+
+            <section class="notice__metting_others">
+                <h3>其他事项</h3>
+                <p>
+                    请参会代表于<strong>07月13日</strong>前完整填写下方的<a
+                        href="#meeting__wj">参会信息</a>，尤其是填写注明报告形式(口头/海报)、报告题目、报告时间要求，以便会务组尽快安排会议日程。
+                </p>
+                <p>会议将根据回执情况发第二轮通知。</p>
+                <p>会议计划线下举行，具体将视疫情发展，按照国家和深圳市规定执行。</p>
+            </section>
+        </article>
+
+        <article class="article schedule" id="schedule">
+            <h2>会议议程</h2>
+            <section>
+                <i class="fa fa-spinner fa-spin margin-right-half"></i>等待通知
+            </section>
+        </article>
+
+        <article class="location" id="location">
+            <h2>交通指引</h2>
+            <section>
+                <h3><span><i class="fa fa-map-marker margin-right-half"></i></span>选择您的起点查看公交路线规划</h3>
+                <!-- <iframe src="/wtt2022/map.html" width="600" height="300" frameborder="0" scrolling="no"></iframe> -->
+                <!-- <iframe src="/wtt2022/tmap.html" width="600" height="600" frameborder="0" scrolling="auto"></iframe> -->
+                <div class="location__box">
+                    <div class="location__btn">
+                        <button id="roadSZS">深圳火车站</button>
+                        <button id="roadSZN">深圳北站</button>
+                        <button id="roadFT">深圳福田高铁站</button>
+                        <button id="roadBA">深圳宝安国际机场</button>
+                        <button id="roadSK">深圳蛇口港</button>
+                        <button id="roadSZU">深圳大学</button>
+                    </div>
+                    <!-- 定义地图显示容器 -->
+                    <div id="location__container"></div>
+                    <div id="location__panel">
+                        <div id="location__instruction"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <details style="padding: 1rem 0;cursor: pointer;">
+                <summary>无法加载地图？请<strong>点击查看文字指引</strong>：到达酒店地址的主要交通方式及乘车路线</summary>
+                <section>
+                    <h3>到达酒店地址的主要交通方式及乘车路线</h3>
+                    <p>
+                        乘坐火车或飞机到达深圳后，距离会议地址最远路程约55公里，以下交通方案根据百度地图按照周一下午5点出行路况预测，仅供参考。各位参会代表路途辛苦，会务组不能安排接送，在此表示歉意。各位参会代表可根据需要参考以下推荐路线或自行查询安排出行。
+                    </p>
+                </section>
+                <section>
+                    <h3><i class="fa fa-road"></i>福田站 至 雅庭海湾国际大酒店</h3>
+
+                    <h4>出租车线路</h4>
+                    <p>
+                        费用约<em>60元</em>，用时约<em>45分钟</em>，全程约20.5公里。
+                    </p>
+
+                    <h4>地铁线路</h4>
+                    <p>
+                        <strong>地铁8号线</strong>，票价<em>6元</em>，用时约<em>54分钟</em>
+                        ，全程约22.2公里。从福田地铁站出发，乘地铁8号线（往盐田路方向）至海山站，从B出口出发步行约600米到达酒店。
+                    </p>
+                </section>
+                <section>
+                    <h3><i class="fa fa-road"></i>深圳北站 至 雅庭海湾国际大酒店</h3>
+
+                    <h4>出租车线路</h4>
+                    <p>
+                        费用约<em>86元</em>，用时约<em>50分钟</em>，全程约29.4公里。
+                    </p>
+
+                    <h4>地铁线路</h4>
+                    <p>
+                        <strong>地铁5号线→地铁8号线</strong>，票价<em>7元</em>，用时约<em>1小时11分钟</em>，全程约32.9公里。从深圳北地铁站出发，乘地铁5号线（环中线）（往黄贝岭方向）至黄贝岭站，再转乘地铁8号线（往盐田路方向）至海山站，从B出口出发步行约600米到达酒店。
+                    </p>
+                </section>
+
+                <section>
+                    <h3><i class="fa fa-plane"></i>深圳宝安国际机场 至 雅庭海湾国际大酒店</h3>
+
+                    <h4>出租车线路</h4>
+                    <p>
+                        费用约<em>169元</em>，用时约<em>1小时9分钟</em>，全程约53.9公里。
+                    </p>
+
+                    <h4>地铁线路</h4>
+                    <p>
+                        <strong>地铁11号线→地铁8号线</strong>，票价<em>10元</em>，用时约<em>1小时27分钟</em>，全程约53.4公里。在机场内搭乘地铁，在机场站乘坐地铁11号线（往福田方向）至福田站，站内换乘地铁8号线（往盐田路方向）至海山站，从B出口出发步行约600米到达酒店。
+                    </p>
+                </section>
+            </details>
+        </article>
+
+        <article id="meeting__wj" class="meeting__wj">
+            <h2>会议回执</h2>
+            <details open>
+                <summary>填写参会信息<span><i
+                            class="fa fa-calendar margin-left-half margin-right-half"></i><strong>注册截止：2022年07月13日</strong></span>
+                </summary>
+                <div class="meeting__wj--wjx">
+                    <script type='text/javascript'
+                        src='https://www.wjx.top/handler/jqemed.ashx?activity=miVAS96&width=795&source=iframe&tm=1&sm=t'></script>
+                </div>
+            </details>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="split_line"></div>
+        <div class="info">
+            <div class="logo">
+                <!-- <img src="https://s2.loli.net/2022/06/07/O35EMl8csNJt2LD.png"> -->
+                <p>版权所有 © 深圳大学高等研究院</p>
+                <p>地址：深圳市南山区南白石路深圳大学沧海校区高等研究院大楼（致知楼）703院办办公室 518060</p>
+                <p>联系电话：0755-26530611</p>
+            </div>
+            <ul class="rel_link">
+                <h3>相关链接</h3>
+                <li><a href="https://ias.szu.edu.cn/">深圳大学高等研究院</a></li>
+                <!-- <li><a href="http://cpoe.szu.edu.cn/">深圳大学物理与光电工程学院</a></li> -->
+                <li><a href="http://mse.sustech.edu.cn/">南方科技大学材料科学与工程系</a></li>
+                <!-- <li><a href="http://phys.cqu.edu.cn/">重庆大学物理学院</a></li> -->
+                <!-- <li><a href="https://www.sigs.tsinghua.edu.cn/">清华大学深圳国际研究生院</a></li> -->
+                <li><a href="https://materials-science.github.io/">Materials Computation & Modeling</a></li>
+            </ul>
+        </div>
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?c946e43019e97ad767878e4d06d4e57b";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+    </footer>
+</body>
+
+</html>
