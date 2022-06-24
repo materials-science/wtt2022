@@ -15,30 +15,36 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/main.min.css" media="screen">
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.min.js" defer></script>
-    <script src="./js/china.js" type="text/javascript" defer></script>
+    <script src="./js/china.min.js" type="text/javascript" defer></script>
     <!--引入Javascript API GL，参数说明参见下文-->
     <script src="https://map.qq.com/api/gljs?v=1.exp&key=YPHBZ-76SED-BRG4Y-HTCTD-YVTXO-TCFZQ" defer></script>
     <script charset="utf-8"
         src="https://map.qq.com/api/gljs?v=1.exp&key=YPHBZ-76SED-BRG4Y-HTCTD-YVTXO-TCFZQ&libraries=service"
         defer></script>
     <script type="text/javascript" src="./js/main.min.js" defer></script>
+    <style>
+        * {
+            font-family: sans-serif, serif;
+        }
+
+        .header__title>h5 {
+            letter-spacing: .1rem;
+        }
+
+        .header__title>h5:nth-child(1) {
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 
 <body style="overflow: hidden;">
     <div class="bgCover">
         <i class="fa fa-spin fa-spinner"></i>
-        <!-- <svg version="1.2" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 550 200"
-            xmlns:xlink="https://www.w3.org/1999/xlink">
-            <path id="svg-pulsar" stroke="rgba(149,4,65,1)" fill="none" stroke-width="1" stroke-linejoin="round"
-                d="M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210" />
-        </svg> -->
     </div>
 
     <nav class="nav">
         <div class="nav__logos">
             <a href="https://ias.szu.edu.cn/">
-                <!-- <img src="https://s2.loli.net/2022/06/07/qbaVtyH1K36peu5.png"> -->
-                <!-- <img class="nav__logos__img--detail" src="https://s2.loli.net/2022/06/07/O35EMl8csNJt2LD.png"> -->
                 <img class="nav__logos__img--detail" src="./images/IAS-h.png">
                 <img class="nav__logos__img--logo" src="./images/ias.jpg">
             </a>
@@ -46,7 +52,7 @@
         </div>
         <ul class="nav__list">
             <li><a href="#metting">WTT2022</a></li>
-            <li>会议议程</li>
+            <li><a href="#schedule">会议议程</a></li>
             <li><a href="#location">交通指引</a></li>
             <li><a href="#meeting__wj">会议注册</a></li>
         </ul>
@@ -54,20 +60,14 @@
 
     <header class="header">
         <div id="cmap"></div>
-        <div id="tag_cloud" class="tag_cloud">
-            <!-- <a href="https://ias.szu.edu.cn/">深圳大学高等研究院</a>
-            <a href="http://cpoe.szu.edu.cn/">深圳大学物理与光电工程学院</a>
-            <a href="http://mse.sustech.edu.cn/">南方科技大学材料科学与工程系</a>
-            <a href="http://phys.cqu.edu.cn/">重庆大学物理学院</a>
-            <a href="https://www.sigs.tsinghua.edu.cn/">清华大学深圳国际研究生院</a>
-            <a href="http://www.yzu.edu.cn/">扬州大学</a>
-            <a href="https://www.xmu.edu.cn/">厦门大学</a>
-            <a href="https://www.hust.edu.cn/">华中科技大学</a>
-            <a href="https://www.qust.edu.cn/">昆明理工大学</a> -->
-        </div>
+        <div id="tag_cloud" class="tag_cloud"></div>
         <div class="header__title animate__animated">
             <h1 data-title>WTT2022</h1>
             <h2 data-vice_title>第七届全国热传导研讨会</h2>
+            <h5>中国·深圳</h5>
+            <h5>深圳大学高等研究院</h5>
+            <h5>南方科技大学材料科学与工程系</h5>
+            <h5>2022年08月07日—09日</h5>
         </div>
         <div class="header__description animate__animated" data-description>
             <p>近年来热传导研究在凝聚态物理、统计物理、工程热物理、导热材料等领域取得了长足的进展，研究学者们也提出了很多新的科学问题。</p>
@@ -82,12 +82,11 @@
             <section class="notice__title">
                 <h3 data-metting_info>
                     第一轮会议通知
-                    <span><i class="fa fa-calendar"></i>2022年06月16日</span>
+                    <span><i class="fa fa-calendar"></i>2022年06月24日</span>
                 </h3>
                 <p data-metting_description>
                     第七届全国热传导研讨会（WTT
-                    2022）将由深圳大学高等研究院和南方科技大学材料科学与工程系承办。研讨会将以线下方式举办，旨在为热输运领域的研究人员和研究生提供一个交流平台，围绕热传导及其交叉领域中的关键问题进行研讨交流，分享近来在理论、模拟、实验方面的进展。
-                    我们诚挚邀请相关专家和研究人员出席本届全国热传导研讨会。
+                    2022）将由深圳大学高等研究院和南方科技大学材料科学与工程系承办。研讨会将以线下方式举办，旨在为热输运领域的研究人员和研究生提供一个交流平台，围绕热传导及其交叉领域中的关键问题进行研讨交流，分享近来在理论、模拟、实验和机器学习等方面的进展。
                 </p>
             </section>
 
@@ -113,7 +112,8 @@
 
             <section class="notice__metting_date">
                 <h3>会议时间</h3>
-                <p>2022年08月07日——2022年08月09日</p>
+                <p>2022年08月07日——2022年08月09日（08月07日早报到，08月09日晚离会）
+                </p>
             </section>
 
             <section class="notice__metting_addr">
@@ -121,29 +121,6 @@
                 <p>
                     <a href="#location"><i class="fa fa-map-marker margin-right-half"></i>雅庭海湾国际大酒店（深圳市盐田区海山路2号）</a>
                 </p>
-            </section>
-
-            <section class="notice__metting_date">
-                <h3>会议报道时间与地点</h3>
-                <p><span>2022年08月07日早于<a href="#location">深圳雅庭海湾国际大酒店</a>报到，08月09日晚离会。</span></p>
-            </section>
-
-            <section class="notice__metting_fee">
-                <h3>注册费用</h3>
-                <p>学生：1000元，教师：1800元，企业代表：2500元
-                    参会代表往返交通费及会议期间食宿费用自理。
-                    会务组已在参会酒店预订了数量充足的房间，房费450元/晚。届时，各参会代表完成注册报到后自行前往酒店前台登记住宿即可。</p>
-                <h3>付款方式</h3>
-                <p>深圳大学收取会议注册费并开具发票，支付账号如下：</p>
-                <p class="notice__metting_fee__ticket">户名：深圳大学
-                    银行：中国银行深圳深大支行
-                    账号：7484 6706 4612
-                    税号：1244 0300 4557 4531 64
-                    地址：深圳市南山区南海大道3688号深圳大学
-                    电话：075526536114
-                </p>
-                <p>线下会议注册费用现场缴纳。会务组将根据到款凭证安排会议日程，开具会议费发票。给各位代表造成的不便，还请谅解！</p>
-                <p>会议注册费发票可开具纸质发票，开具明细为“会务费”。请参会代表在会议注册时填写发票信息。</p>
             </section>
 
             <section class="notice__metting_tips">
@@ -156,6 +133,25 @@
                     <li>海报报告特殊说明：仅支持线下海报报告(3分钟现场口头展示)和海报张贴展示。如需要海报张贴展示请联系会务组，邮寄海报至：<em>广东省深圳市南山区南海大道3688号深圳大学沧海校区致知楼7楼学生办公室</em>，邮编：518060，庞桂健，15889680048。会务组会安排海报张贴。
                     </li>
                 </ol>
+            </section>
+
+            <section class="notice__metting_fee">
+                <h3>会议注册</h3>
+                <p><b>注册费用：</b>学生 1200元，教师 2000元，企业代表 2500元</p>
+                <!-- <h3>付款方式</h3>
+                    <p>深圳大学收取会议注册费并开具发票，支付账号如下：</p>
+                    <p class="notice__metting_fee__ticket">户名：深圳大学
+                    银行：中国银行深圳深大支行
+                    账号：7484 6706 4612
+                    税号：1244 0300 4557 4531 64
+                    地址：深圳市南山区南海大道3688号深圳大学
+                    电话：075526536114
+                </p>
+                <p>请各位参会代表办理汇款时在汇款附言中<em>注明“WTT+姓名+人数”</em>。会务组将根据到款凭证安排会议日程，开具发票。为便于及时出具发票，请尽早办理汇款。</p> -->
+                <p><b>注册方式：</b><a href="#meeting__wj">在线注册</a></p>
+                <p><b>注册费用缴纳：</b>会议报到现场缴纳会议注册费，开具纸质发票，开具明细为“会议费”。请参会代表在现场报到时填写发票信息。</p>
+                <p>参会代表往返交通费及会议期间食宿费用自理，会务组已在会议酒店预订了一定数量的房间，房费450元/晚。届时，各参会代表完成注册报到后自行前往酒店前台登记住宿即可。如果7月13日以后注册参会，无法保证会议酒店客房。
+                </p>
             </section>
 
             <section class="notice__metting_concat">
@@ -221,14 +217,15 @@
                     <span><a href="mailto:weibj@sustech.edu.cn"><i
                                 class="fa fa-envelope"></i>weibj@sustech.edu.cn</a></span>
                 </p>
+                <p>
+                    <span><i class="fa fa-user"></i>孟凡玲</span>
+                    <span><a href="mailto:mengfl@sustech.edu.cn"><i
+                                class="fa fa-envelope"></i>mengfl@sustech.edu.cn</a></span>
+                </p>
             </section>
 
             <section class="notice__metting_others">
                 <h3>其他事项</h3>
-                <p>
-                    请参会代表于<strong>07月13日</strong>前完整填写下方的<a
-                        href="#meeting__wj">参会信息</a>，尤其是填写注明报告形式(口头/海报)、报告题目、报告时间要求，以便会务组尽快安排会议日程。
-                </p>
                 <p>会议将根据回执情况发第二轮通知。</p>
                 <p>会议计划线下举行，具体将视疫情发展，按照国家和深圳市规定执行。</p>
             </section>
@@ -245,13 +242,11 @@
             <h2>交通指引</h2>
             <section>
                 <h3><span><i class="fa fa-map-marker margin-right-half"></i></span>选择您的起点查看公交路线规划</h3>
-                <!-- <iframe src="./map.html" width="600" height="300" frameborder="0" scrolling="no"></iframe> -->
-                <!-- <iframe src="./tmap.html" width="600" height="600" frameborder="0" scrolling="auto"></iframe> -->
                 <div class="location__box">
                     <div class="location__btn">
                         <button id="roadSZS">深圳火车站</button>
-                        <button id="roadSZN">深圳北站</button>
-                        <button id="roadFT">深圳福田高铁站</button>
+                        <button id="roadSZN">深圳北站 [高铁]</button>
+                        <button id="roadFT">深圳福田站 [高铁]</button>
                         <button id="roadBA">深圳宝安国际机场</button>
                         <button id="roadSK">深圳蛇口港</button>
                         <button id="roadSZU">深圳大学</button>
@@ -318,11 +313,11 @@
         </article>
 
         <article id="meeting__wj" class="meeting__wj">
-            <h2>会议回执</h2>
+            <h2>会议注册</h2>
+            <p>请参会代表注意填写注明报告形式(口头/海报)、报告题目及摘要，以便会务组尽快安排会议日程。有报告需求的会议注册截止日期：<strong>07月13日</strong>。此后仅接受无需报告的注册，且不能保证会议酒店的客房。
+            </p>
             <details open>
-                <summary>填写参会信息<span><i
-                            class="fa fa-calendar margin-left-half margin-right-half"></i><strong>注册截止：2022年07月13日</strong></span>
-                </summary>
+                <summary>填写参会信息</summary>
                 <div class="meeting__wj--wjx">
                     <script type='text/javascript'
                         src='https://www.wjx.top/handler/jqemed.ashx?activity=miVAS96&width=795&source=iframe&tm=1&sm=t'></script>
@@ -335,7 +330,6 @@
         <div class="split_line"></div>
         <div class="info">
             <div class="logo">
-                <!-- <img src="https://s2.loli.net/2022/06/07/O35EMl8csNJt2LD.png"> -->
                 <p>版权所有 © 深圳大学高等研究院</p>
                 <p>地址：深圳市南山区南白石路深圳大学沧海校区高等研究院大楼（致知楼）703院办办公室 518060</p>
                 <p>联系电话：0755-26530611</p>
@@ -343,10 +337,7 @@
             <ul class="rel_link">
                 <h3>相关链接</h3>
                 <li><a href="https://ias.szu.edu.cn/">深圳大学高等研究院</a></li>
-                <!-- <li><a href="http://cpoe.szu.edu.cn/">深圳大学物理与光电工程学院</a></li> -->
                 <li><a href="http://mse.sustech.edu.cn/">南方科技大学材料科学与工程系</a></li>
-                <!-- <li><a href="http://phys.cqu.edu.cn/">重庆大学物理学院</a></li> -->
-                <!-- <li><a href="https://www.sigs.tsinghua.edu.cn/">清华大学深圳国际研究生院</a></li> -->
                 <li><a href="https://materials-science.github.io/">Materials Computation & Modeling</a></li>
             </ul>
         </div>
