@@ -25,7 +25,6 @@ const mettingDocs = {
 	metting_date: "2022年08月06日——08月09日",
 	metting_location: "雅庭海湾国际大酒店（深圳市盐田区海山路2号）",
 };
-
 window.onload = function () {
 	/* Load Header Map */
 	var map;
@@ -255,103 +254,6 @@ window.onload = function () {
 		initMap();
 	}
 
-	var cmap = document.querySelector("#cmap");
-	cmap.style.width = window.innerWidth + "px";
-	cmap.style.height = window.innerHeight / 2 + "px";
-	if (cmap.clientHeight > 0) {
-		let chart = echarts.init(cmap);
-		chart.setOption({
-			geo: {
-				map: "china",
-				silent: true,
-				// 地图区域的样式设置
-				itemStyle: {
-					borderColor: "rgba(147, 235, 248, 1)",
-					borderWidth: 1,
-					areaColor: {
-						type: "radial",
-						x: 0.5,
-						y: 0.5,
-						r: 0.8,
-						colorStops: [
-							{
-								offset: 0,
-								color: "rgba(147, 235, 248, 0)", // 0% 处的颜色
-							},
-							{
-								offset: 1,
-								color: "rgba(147, 235, 248, .2)", // 100% 处的颜色
-							},
-						],
-						globalCoord: false, // 缺省为 false
-					},
-					shadowColor: "rgba(128, 217, 248, 1)",
-					shadowOffsetX: -2,
-					shadowOffsetY: 2,
-					shadowBlur: 10,
-				},
-			},
-			series: [
-				{
-					type: "scatter",
-					coordinateSystem: "geo",
-					symbol: "pin",
-					legendHoverLink: true,
-					symbolSize: [60, 60],
-					// 标志的样式
-					itemStyle: {
-						color: "rgba(255,0,0,.7)",
-						// shadowBlur: 2,
-						shadowColor: "D8BC37",
-					},
-					label: {
-						show: true,
-						formatter(value) {
-							return value.name;
-						},
-						color: "#fff",
-					},
-					data: [{ name: "深圳", value: [114.03, 22.32] }],
-					showEffectOn: "render",
-					rippleEffect: {
-						brushType: "stroke",
-					},
-				},
-				{
-					type: "scatter",
-					coordinateSystem: "geo",
-					symbol: "pin",
-					legendHoverLink: true,
-					symbolSize: [50, 50],
-					// 标志的样式
-					itemStyle: {
-						color: "rgba(255,165,0,.5)",
-						shadowBlur: 2,
-						shadowColor: "D8BC37",
-					},
-					label: {
-						show: true,
-						formatter(value) {
-							return value.name;
-						},
-						color: "#fff",
-					},
-					data: [
-						{ name: "扬州", value: [119.26, 32.24] },
-						{ name: "厦门", value: [118.04, 24.26] },
-						{ name: "武汉", value: [113.41, 29.58] },
-						{ name: "青岛", value: [119.3, 35.35] },
-						{ name: "昆明", value: [102.1, 24.23] },
-					],
-					showEffectOn: "render",
-					rippleEffect: {
-						brushType: "stroke",
-					},
-				},
-			],
-		});
-	}
-
 	/* nav btn event */
 	navBarsBtn = document.querySelector(".nav__bars");
 	navList = document.querySelector(".nav__list");
@@ -369,7 +271,7 @@ window.onload = function () {
 	initApp();
 
 	function initTagCloud(radius /* 标签云半径 */, tspeed /* 标签运动速度 */) {
-		var radius = radius || 68; // 标签云半径
+		var radius = radius || 120; // 标签云半径
 		var dtr = Math.PI / 180;
 		var d = 300;
 		var mcList = [];
@@ -550,8 +452,27 @@ window.onload = function () {
 			cc = Math.cos(c * dtr);
 		}
 	}
-	/* Load tag cloud */
-	if (cmap.clientHeight > 0) {
+
+	/* hidden loading bg */
+	(function ($) {
+		var bgCover = $.querySelector(".bgCover");
+		setTimeout(function () {
+			bgCover.style.opacity = 0;
+
+			setTimeout(function () {
+				bgCover.style.display = "none";
+				// bgCover.parentNode.removeChild(bgCover);
+			}, 100);
+
+			$.body.style.overflow = "auto";
+			$.querySelector(".header__title").className += " animate__fadeInUp";
+			$.querySelector(".header__description").className +=
+				" animate__slideInRight";
+		}, 100);
+	})(document);
+
+	if (window.innerWidth > 750) {
+		/* Load tag cloud */
 		let tagsDom = document.querySelector("#tag_cloud");
 		!!mettingDocs.metting_topic &&
 			mettingDocs.metting_topic.forEach((item) => {
@@ -562,22 +483,4 @@ window.onload = function () {
 
 		initTagCloud(tagsDom.clientHeight * 0.5, 5);
 	}
-
-	/* hidden loading bg */
-	(function ($) {
-		var bgCover = $.querySelector(".bgCover");
-		setTimeout(function () {
-			bgCover.style.opacity = 0;
-
-			setTimeout(function () {
-				bgCover.style.display = "none";
-				bgCover.parentNode.removeChild(bgCover);
-			}, 500);
-
-			$.body.style.overflow = "auto";
-			$.querySelector(".header__title").className += " animate__fadeInUp";
-			$.querySelector(".header__description").className +=
-				" animate__slideInRight";
-		}, 500);
-	})(document);
 };
