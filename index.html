@@ -25,6 +25,11 @@
             font-family: sans-serif, serif;
         }
 
+        .title--strong {
+            color: rgb(149, 4, 65);
+            font-weight: bolder;
+        }
+
         .header__title>h5 {
             letter-spacing: .1rem;
         }
@@ -35,6 +40,13 @@
 
         .main {
             background-attachment: fixed;
+        }
+
+        /* override main.css */
+        .header__description {
+            height: 90%;
+            top: 5%;
+            right: 2%;
         }
     </style>
 </head>
@@ -69,7 +81,8 @@
             <h5>中国·深圳</h5>
             <h5>深圳大学高等研究院</h5>
             <h5>南方科技大学材料科学与工程系</h5>
-            <h5>2022年08月07日—09日</h5>
+            <!-- <h5>2022年08月07日—09日</h5> -->
+            <h5>会议延期，请耐心等候</h5>
         </div>
         <div class="header__description animate__animated animate__delay-0.5s" data-description>
             <p>近年来热传导研究在凝聚态物理、统计物理、工程热物理、导热材料等领域取得了长足的进展，研究学者们也提出了很多新的科学问题。</p>
@@ -82,6 +95,16 @@
         <article class="article notice" id="metting">
             <h2>会议通知</h2>
             <section class="notice__title">
+                <h3 class="data-metting_info title--strong">
+                    会议延期通知
+                    <span><i class="fa fa-calendar"></i>2022年07月26日</span>
+                </h3>
+                <p class="data-metting_description">
+                    很抱歉地通知参会的老师和同学，由于疫情和相关防疫政策的原因，原定于2022年08月07日——2022年08月09日的WTT2022将延期举行，具体举行时间另行通知，请各位老师和同学耐心等候，谢谢！
+                </p>
+            </section>
+
+            <section class="notice__title">
                 <h3 data-metting_info>
                     第一轮会议通知
                     <span><i class="fa fa-calendar"></i>2022年06月24日</span>
@@ -91,7 +114,10 @@
                     2022）将由深圳大学高等研究院和南方科技大学材料科学与工程系承办。研讨会将以线下方式举办，旨在为热输运领域的研究人员和研究生提供一个交流平台，围绕热传导及其交叉领域中的关键问题进行研讨交流，分享近来在理论、模拟、实验和机器学习等方面的进展。
                 </p>
             </section>
+        </article>
 
+        <article>
+            <h2>会议详情</h2>
             <section class="notice__metting_topic">
                 <h3>会议主题</h3>
                 <p data-metting_topic>
@@ -100,6 +126,7 @@
                     <span>拓扑手性声子</span>
                     <span>低维纳米传热</span>
                     <span>量子热输运</span>
+                    <span>电声耦合</span>
                     <span>热超材料</span>
                     <span>热蒸发</span>
                     <span>热辐射</span>
